@@ -1,5 +1,5 @@
 
-- [Introduction](#generic)
+- [Battery Indicator](#battery-indicator)
 
 ### Generic Segmented Control [[segmentedcontrol]](app/src/main/java/com/andresruiz/composablesnippets/segmentedcontrol)
 
