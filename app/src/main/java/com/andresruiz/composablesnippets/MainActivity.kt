@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.andresruiz.composablesnippets.segmentedcontrol.SegmentedControlExamples
+import com.andresruiz.composablesnippets.battery.BatteryIndicator
 import com.andresruiz.composablesnippets.ui.theme.ComposableSnippetsTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,12 +27,12 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Box(
                         modifier = Modifier
-                            .padding(innerPadding)
                             .fillMaxSize()
-                            .background(Color(0xFFFEF7FF))
+                            .background(Color(0xFFE7E9EF))
+                            .padding(innerPadding)
                             .padding(16.dp)
                     ) {
-                        SegmentedControlExamples()
+                        BatteryIndicator()
                     }
                 }
             }
