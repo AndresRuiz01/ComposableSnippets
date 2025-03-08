@@ -37,3 +37,15 @@ fun GenericThousandsSeparatorSegmentedControl(modifier: Modifier = Modifier) {
 
 https://github.com/user-attachments/assets/6feb0497-a319-4e3e-977c-c573d0939c5e
 
+### Battery Indicator
+
+https://github.com/user-attachments/assets/45a6ea97-dab9-462e-819f-3d5012c39619
+
+
+
+
+
+
+
+
+
