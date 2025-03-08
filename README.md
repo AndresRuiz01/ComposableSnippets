@@ -1,7 +1,10 @@
 
+- [Generic Segmented Control](#generic-segmented-control)
 - [Battery Indicator](#battery-indicator)
 
-### Generic Segmented Control [[segmentedcontrol]](app/src/main/java/com/andresruiz/composablesnippets/segmentedcontrol)
+### Generic Segmented Control
+
+Directory: [[segmentedcontrol]](app/src/main/java/com/andresruiz/composablesnippets/segmentedcontrol)
 
 1. Define the `Enum` or `Class` with a `toString()` override
 
@@ -41,7 +44,7 @@ https://github.com/user-attachments/assets/6feb0497-a319-4e3e-977c-c573d0939c5e
 
 ### Battery Indicator
 
-[[battery]](app/src/main/java/com/andresruiz/composablesnippets/battery)
+Directory: [[battery]](app/src/main/java/com/andresruiz/composablesnippets/battery)
 
 https://github.com/user-attachments/assets/45a6ea97-dab9-462e-819f-3d5012c39619
 
