@@ -11,17 +11,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.andresruiz.composablesnippets.segmentedcontrol.GenericSegmentedControl
-import com.andresruiz.composablesnippets.segmentedcontrol.SegmentedControl
+import com.andresruiz.composablesnippets.segmentedcontrol.SegmentedControlExamples
 import com.andresruiz.composablesnippets.ui.theme.ComposableSnippetsTheme
 
 class MainActivity : ComponentActivity() {
@@ -38,53 +32,12 @@ class MainActivity : ComponentActivity() {
                             .background(Color(0xFFFEF7FF))
                             .padding(16.dp)
                     ) {
-                        GenericThousandsSeparatorSegmentedControl()
+                        SegmentedControlExamples()
                     }
                 }
             }
         }
     }
-}
-
-enum class ThousandsSeparator {
-    DOT {
-        override fun toString() = "1.000"
-    },
-    COMMA {
-        override fun toString() = "1,000"
-    },
-    SPACE {
-        override fun toString() = "1 000"
-    }
-}
-
-@Composable
-fun ThousandsSeparatorSegmentedControl(modifier: Modifier = Modifier) {
-
-    var selectedIndex by remember { mutableIntStateOf(0) }
-
-    SegmentedControl(
-        title = "Thousands separator",
-        items = listOf("1.000", "1,000", "1 000"),
-        selectedIndex = selectedIndex,
-        onSelectedIndexChanged = { index ->
-            selectedIndex = index
-        },
-    )
-}
-
-@Composable
-fun GenericThousandsSeparatorSegmentedControl(modifier: Modifier = Modifier) {
-    val items = listOf(ThousandsSeparator.DOT, ThousandsSeparator.COMMA, ThousandsSeparator.SPACE)
-    val selectedItem = remember { mutableStateOf(ThousandsSeparator.DOT) }
-
-    GenericSegmentedControl(
-        title = "Generic Thousands Separator",
-        items = items,
-        selectedItem = selectedItem.value,
-        onSelectedIndexChanged = { selectedItem.value = it },
-        modifier = modifier
-    )
 }
 
 @Composable
