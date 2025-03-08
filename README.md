@@ -1,5 +1,7 @@
 
-### Generic Segmented Control
+- [Introduction](#generic)
+
+### Generic Segmented Control [[segmentedcontrol]](app/src/main/java/com/andresruiz/composablesnippets/segmentedcontrol)
 
 1. Define the `Enum` or `Class` with a `toString()` override
 
@@ -37,7 +39,7 @@ fun GenericThousandsSeparatorSegmentedControl(modifier: Modifier = Modifier) {
 
 https://github.com/user-attachments/assets/6feb0497-a319-4e3e-977c-c573d0939c5e
 
-### Battery Indicator
+### Battery Indicator [[battery]](app/src/main/java/com/andresruiz/composablesnippets/battery)
 
 https://github.com/user-attachments/assets/45a6ea97-dab9-462e-819f-3d5012c39619
 
