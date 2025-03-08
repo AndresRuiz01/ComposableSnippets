@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.andresruiz.composablesnippets.segmentedcontrol.GenericSegmentedControl
 import com.andresruiz.composablesnippets.segmentedcontrol.SegmentedControl
 import com.andresruiz.composablesnippets.ui.theme.ComposableSnippetsTheme
 
@@ -37,11 +38,23 @@ class MainActivity : ComponentActivity() {
                             .background(Color(0xFFFEF7FF))
                             .padding(16.dp)
                     ) {
-                        ThousandsSeparatorSegmentedControl()
+                        GenericThousandsSeparatorSegmentedControl()
                     }
                 }
             }
         }
+    }
+}
+
+enum class ThousandsSeparator {
+    DOT {
+        override fun toString() = "1.000"
+    },
+    COMMA {
+        override fun toString() = "1,000"
+    },
+    SPACE {
+        override fun toString() = "1 000"
     }
 }
 
@@ -57,6 +70,20 @@ fun ThousandsSeparatorSegmentedControl(modifier: Modifier = Modifier) {
         onSelectedIndexChanged = { index ->
             selectedIndex = index
         },
+    )
+}
+
+@Composable
+fun GenericThousandsSeparatorSegmentedControl(modifier: Modifier = Modifier) {
+    val items = listOf(ThousandsSeparator.DOT, ThousandsSeparator.COMMA, ThousandsSeparator.SPACE)
+    val selectedItem = remember { mutableStateOf(ThousandsSeparator.DOT) }
+
+    GenericSegmentedControl(
+        title = "Generic Thousands Separator",
+        items = items,
+        selectedItem = selectedItem.value,
+        onSelectedIndexChanged = { selectedItem.value = it },
+        modifier = modifier
     )
 }
 

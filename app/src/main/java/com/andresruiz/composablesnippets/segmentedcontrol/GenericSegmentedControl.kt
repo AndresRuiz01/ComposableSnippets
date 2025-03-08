@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -29,19 +28,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInParent
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.andresruiz.composablesnippets.ui.theme.ComposableSnippetsTheme
+
 
 
 @Composable
-fun SegmentedControl(
+fun <T> GenericSegmentedControl(
     title: String,
-    items: List<String>,
-    selectedIndex: Int,
-    onSelectedIndexChanged: (Int) -> Unit,
+    items: List<T>,
+    selectedItem: T,
+    onSelectedIndexChanged: (T) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
@@ -52,11 +50,13 @@ fun SegmentedControl(
     )
 
     Column(
-        verticalArrangement = Arrangement.spacedBy(4.dp)
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+        modifier = modifier
     ) {
         SegmentedControlTitle(
             title = title
         )
+
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -69,7 +69,7 @@ fun SegmentedControl(
             Box(
                 modifier = Modifier
                     .fillMaxHeight()
-                    .fillMaxWidth(1f/items.size)
+                    .fillMaxWidth(1f / items.size)
                     .offset {
                         IntOffset(animatedOffset, 0)
                     }
@@ -86,7 +86,7 @@ fun SegmentedControl(
                     .fillMaxWidth()
                     .fillMaxHeight()
             ) {
-                items.forEachIndexed { index, it ->
+                items.forEach { item ->
                     var xOffset by remember { mutableIntStateOf(0) }
                     val interactionSource = remember { MutableInteractionSource() }
 
@@ -102,46 +102,21 @@ fun SegmentedControl(
                                 interactionSource = interactionSource,
                                 indication = null
                             ) {
-                                onSelectedIndexChanged(index)
+                                onSelectedIndexChanged(item)
                                 indicatorOffset = xOffset
                             }
                     ) {
                         Text(
-                            text = it,
+                            text = item.toString(),
                             fontWeight = FontWeight.W600,
                             fontSize = 16.sp,
                             lineHeight = 24.sp,
                             letterSpacing = 0.sp,
-                            color = if (index == selectedIndex) Color.Black else Color(0xFF24005A),
+                            color = if (item == selectedItem) Color.Black else Color(0xFF24005A),
                         )
                     }
                 }
             }
-        }
-    }
-}
-
-
-@Preview
-@Composable
-private fun SegmentedControlPreview() {
-    ComposableSnippetsTheme {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color(0xFFFEF7FF))
-                .padding(16.dp)
-        ) {
-            var selectedIndex by remember { mutableIntStateOf(0) }
-
-            SegmentedControl(
-                title = "Thousands separator",
-                items = listOf("1.000", "1,000", "1 000"),
-                selectedIndex = selectedIndex,
-                onSelectedIndexChanged = {
-                    selectedIndex = it
-                }
-            )
         }
     }
 }
