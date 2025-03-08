@@ -1,3 +1,4 @@
+
 ### Generic Segmented Control
 
 1. Define the `Enum` or `Class` with a `toString()` override
